@@ -1,0 +1,72 @@
+🚨 1. Error: streak.activities is not iterable
+❌ Problem:
+You're likely trying to spread or iterate over streak.activities, but activities is either:
+
+undefined, or
+
+not an array.
+
+From the error stack, this line is the problem:
+
+ts
+Copy
+Edit
+const updatedActivities = [...streak.activities, newActivity];
+If streak.activities is undefined (e.g., on first run), spreading it throws the error.
+
+✅ Fix:
+Make sure streak.activities is always initialized as an array before you spread:
+
+ts
+Copy
+Edit
+const updatedActivities = [
+  ...(Array.isArray(streak.activities) ? streak.activities : []),
+  newActivity,
+];
+🧠 2. Streaks Should Be Based on Study Sessions (Not Just Pomodoro Completion)
+You're absolutely right. Here's how you should structure it:
+
+✅ Track streaks based on:
+Explicit study sessions (could be triggered by a manual "Start Session" or "Mark as Studied" action per subject)
+
+OR based on actual test completions
+
+Do not make PomodoroTimer automatically add to streaks — instead, use it for tracking time spent per subject (for recommendations only).
+
+✅ Updated Feature Architecture
+Feature	Based on	Storage Key	Displayed Where
+Study Streak	studySessions[] = [{ date, subject }]	localStorage / DB	Study Tools > Badge
+Recommendations	testRecords[] + pomodoroLogs[]	localStorage / DB	Smart Recos
+Pomodoro Stats	pomodoroLogs[] = [{ subject, duration, date }]	Local	Dashboard Chart
+
+🛠 What to Fix/Build Now
+✅ Fix the crash:
+
+ts
+Copy
+Edit
+const updatedActivities = [
+  ...(Array.isArray(streak.activities) ? streak.activities : []),
+  newActivity,
+];
+✅ Create a proper studySessions[] logger:
+
+Allow user to click “Start Study Session”
+
+Ask for subject
+
+Push { date: today, subject } to studySessions
+
+✅ Recalculate streaks from studySessions[]
+
+ts
+Copy
+Edit
+const dates = [...new Set(studySessions.map(s => s.date))].sort()
+const { current, longest } = calculateStreak(dates)
+✅ Rebuild Recommendations:
+
+Use pomodoroLogs[] + testRecords[] to check “last studied” date per subject
+
+If daysSince > 3, show a rec

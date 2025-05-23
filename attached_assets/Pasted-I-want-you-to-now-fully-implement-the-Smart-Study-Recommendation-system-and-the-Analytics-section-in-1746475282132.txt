@@ -1,0 +1,82 @@
+I want you to now fully implement the Smart Study Recommendation system and the Analytics section in the JEE Dashboard with real, working logic and NO placeholder content. Everything should be functional, reactive, and data-driven. Here’s exactly what to do:
+
+✅ 1. SMART STUDY RECOMMENDATIONS (No more dummy text)
+Replace the placeholder Smart Study Recommendation content with real, personalized suggestions generated from:
+
+✅ Pomodoro session logs (track subjects studied and durations)
+
+✅ Test records, especially the "areas of improvement" and "subject" fields
+
+Logic:
+
+If one subject (e.g., Physics) has been studied far more or far less than others → recommend balancing effort.
+
+If test records mention the same topic repeatedly in "areas of improvement" → recommend revisiting those topics with study tips.
+
+Combine test results and Pomodoro logs to suggest which subject needs focus and what action to take (e.g., “Revise Electrostatics. Appears in your weak topics + studied only once this week.”).
+
+Make sure this logic updates dynamically as new Pomodoro sessions or test records are added.
+
+Design:
+
+Use icons and subject-specific styling (already implemented) to display up to 3–5 recommendations.
+
+If no data yet, show a polite empty state with instructions to start logging sessions/tests.
+
+This component must be shared between the JEE Dashboard and the Smart Recommendations section on the Home page.
+
+The home page version should be read-only, reflecting real-time content from the JEE Dashboard.
+
+📊 2. FULLY FUNCTIONAL ANALYTICS SECTION
+Build a visual analytics dashboard (in the JEE Dashboard or a new tab) using the actual data. Use recharts or a simple chart library.
+
+Implement the following visualizations:
+
+Subject-wise Study Hours
+
+Source: Pomodoro logs
+
+Chart: Bar or pie chart showing total time spent on Physics, Chemistry, Math over the last 7/30 days.
+
+Test Score Trends
+
+Source: Test records
+
+Chart: Line or bar chart showing score trends over time per subject
+
+Top 3 Weak Topics (Most Frequent Areas of Improvement)
+
+Source: Areas of Improvement from test entries
+
+Chart or tag cloud showing most repeated weak areas
+
+All visualizations should:
+
+Update dynamically as new data is added
+
+Handle empty state gracefully
+
+Be styled consistently with the rest of the app
+
+💾 3. DATA AND STATE MANAGEMENT
+Ensure all recommendations and analytics pull from the actual saved records:
+
+Pomodoro logs (with subjects + duration)
+
+Test results (with subject, topic, score, and area of improvement)
+
+Validate and sanitize inputs before saving
+
+Do not rely on mock data or hardcoded arrays
+
+✅ Summary:
+
+Functional Smart Recommendations based on Pomodoro + Test Data
+
+Fully Working Analytics Section with dynamic charts
+
+No more placeholders or dummy content
+
+Data shared properly between pages (e.g., Home page shows live recommendations)
+
+TypeScript safe, responsive, and deploy-ready

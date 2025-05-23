@@ -1,0 +1,86 @@
+My full-stack web app is facing serious login and session issues after deployment. I’m using fetch with credentials: "include" and a secure backend.
+
+Here's exactly what needs to be fixed and implemented:
+
+🔥 Critical Issues:
+Login always fails with 401 Unauthorized, even with correct credentials.
+
+Console shows: Fetch options: credentials: "include", method: "POST" and still gets Error 401.
+
+Backend is not receiving or processing cookies/sessions correctly.
+
+Session/authentication state is not maintained after login.
+
+Actions like “Start Study Session” show “Authentication required” or “Error loading data”.
+
+⚠️ Broken CORS or cookie settings.
+
+Likely caused by misconfigured SameSite, Secure, domain, or CORS headers in the backend or lack of cookie persistence on frontend.
+
+I'm using Replit dev URLs or Render for hosting, so it’s cross-origin.
+
+Missing “Forgot Password” flow.
+
+Implement a complete forgot-password system:
+
+/forgot-password frontend page
+
+Backend sends reset link or temporary code
+
+Password reset page with token verification
+
+✅ Please Do the Following:
+🔒 Authentication & Sessions
+Fix backend login route to return and persist session cookies securely.
+
+Ensure Set-Cookie header works with:
+
+http
+Copy
+Edit
+Set-Cookie: token=abc; Path=/; HttpOnly; SameSite=None; Secure
+Add necessary CORS headers:
+
+ts
+Copy
+Edit
+Access-Control-Allow-Origin: <frontend URL>
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type
+Confirm that fetch calls include credentials: 'include' in all frontend requests.
+
+🛠 Fix Backend Auth Middleware
+Validate JWT/session tokens from cookies on protected routes.
+
+Handle missing/expired token cases gracefully (not just generic 401).
+
+🔧 Fix Frontend
+On successful login, update auth context and store token (if not using cookies).
+
+Redirect correctly after login.
+
+Use environment variables to pick base API URL (not hardcoded localhost).
+
+🔐 Add Forgot Password Feature
+Create POST /api/auth/forgot-password route (accepts email, sends reset link).
+
+Create POST /api/auth/reset-password (with reset token and new password).
+
+Frontend pages for both: input email → reset form with token → confirmation.
+
+🧪 Testing
+Test everything on deployed URLs (https://...render.com or replit.dev), not just localhost.
+
+After logging in:
+
+Session should persist on reload
+
+API should return user data
+
+Protected routes should work
+
+Study session should start
+
+Logout should clear session properly
+
+Fix all of the above in a single complete pass. Final code must be secure, deploy-ready, and cleanly tested.

@@ -1,0 +1,154 @@
+You are an expert full-stack developer working on a feature-rich, production-grade web app using this stack:
+
+Tech Stack:
+Frontend: React (TypeScript), TailwindCSS, Shadcn UI
+
+Backend: Node.js with Express.js
+
+Database: PostgreSQL via Drizzle ORM
+
+Authentication: Session-based via Passport.js (already working)
+
+State Management: React Query
+
+Deployment: Final target is Render (currently using Replit Preview)
+
+Your job is to implement the following features in this exact order, without breaking anything, and ensuring the project remains 100% deployable and stable with zero side effects. All code must be production-ready, SSR-safe, and well modularized.
+
+PHASE 1: Low-Risk, High-Reward Features
+1. Animated Study Progress Confetti Celebration
+Objective: Confetti when user completes a goal or finishes a study session.
+
+Frontend:
+Use canvas-confetti or react-confetti (whichever fits better with SSR-safe React).
+
+Confetti triggers on events like:
+
+Goal marked as complete
+
+A study session duration exceeds a threshold (e.g., 30+ min)
+
+Component placed high in DOM tree (e.g., _app.tsx or main Layout).
+
+Use a showConfetti state controlled via event triggers.
+
+Confetti runs once per event, then resets state.
+
+Example UX:
+tsx
+Copy
+Edit
+{showConfetti && <Confetti recycle={false} />}
+2. Smart Study Streak Motivational Badges
+Goal: Encourage users by rewarding consistent daily study.
+
+Backend:
+Modify the users table in Drizzle ORM:
+
+ts
+Copy
+Edit
+studyStreak: integer('study_streak').default(0),
+lastStudiedAt: timestamp('last_studied_at'),
+On study session creation:
+
+If lastStudiedAt is yesterday: studyStreak++
+
+If lastStudiedAt is today: no change
+
+Else: reset studyStreak to 1
+
+Always update lastStudiedAt to now
+
+Frontend:
+Create “Streak Badge” component using Badge from Shadcn UI.
+
+Display icons for streak levels:
+
+3+ days: 🔥 Hot Streak!
+
+7+ days: ⭐ Committed!
+
+14+ days: 🚀 Legend!
+
+Add tooltip with text (e.g., “5-day streak”)
+
+PHASE 2: Interactive Subject Difficulty Heat Map
+1. Database Setup
+Create study_sessions table if it doesn’t exist:
+
+ts
+Copy
+Edit
+import { pgTable, text, uuid, timestamp, integer } from 'drizzle-orm/pg-core';
+
+export const studySessions = pgTable('study_sessions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id),
+  subject: text('subject').notNull(),
+  duration: integer('duration'), // in minutes
+  score: integer('score'), // optional test score
+  createdAt: timestamp('created_at').defaultNow(),
+});
+2. Backend API Route: /api/heatmap
+Input: authenticated user
+
+Output: per-subject difficulty map:
+
+Lower scores = higher difficulty
+
+Can fall back to average duration if no score
+
+ts
+Copy
+Edit
+{
+  math: 45,
+  physics: 70,
+  chemistry: 30,
+}
+Logic:
+
+Group study sessions by subject
+
+Average score or inverse average duration
+
+3. Frontend Heatmap Component
+Use recharts or react-chartjs-2 (SSR-safe)
+
+Y-axis: Performance Score (0–100)
+
+X-axis: Subjects
+
+Color-coded bars or grid: green = strong, red = weak
+
+Fetch via React Query from /api/heatmap
+
+tsx
+Copy
+Edit
+const { data } = useQuery(['heatmap'], fetchHeatmap);
+Add to “Dashboard” or “My Analytics” page
+
+GLOBAL REQUIREMENTS:
+No breaking changes to login/session/auth
+
+SSR safe (no window/object reference errors)
+
+Clean file structure: feature logic in services/ or lib/, UI in components/
+
+Tailwind and Shadcn used for all styling
+
+Environment agnostic: must work in Replit preview and Render after deploy
+
+All new DB schema must be migrated and committed
+
+Once done, confirm:
+
+Log in and register still work
+
+No console errors in frontend or backend
+
+All features visible only for logged-in users
+
+Database schema fully synced with Drizzle ORM

@@ -1,0 +1,113 @@
+You are a full-stack front-end expert. Build a fully functional static website called "Chadjee" for JEE Mains + Advanced preparation planning.
+
+Important: This must NOT be just a UI skeleton.
+You must also implement complete JavaScript functionality properly, including: login, signup, saving user tasks, progress tracking, countdown timer, calendar management, quotes rotation — everything must work completely on LocalStorage.
+
+Core requirements:
+
+Pure static site (only HTML, CSS, JS — no backend)
+
+Extremely clean, minimalistic, neon-styled UI
+
+Dark theme with neon highlights (neon blue, neon green, purple)
+
+Smooth UI animations and transitions
+
+
+Features:
+
+Landing Page (Home):
+
+Eye-catching welcome screen
+
+"Login" and "Sign Up" buttons
+
+Typing text animation (Typed.js) for catchy text
+
+AOS.js scroll-based animations
+
+
+Login Page:
+
+Proper login functionality using LocalStorage
+
+Redirect to Dashboard after successful login
+
+Alert for invalid login
+
+
+Sign Up Page:
+
+Proper signup functionality using LocalStorage
+
+Redirect to Login page after successful signup
+
+Alert for signup success/failure
+
+
+Dashboard Page (after login):
+
+Study Planner (select subjects, add topics, mark topics complete)
+
+Daily Task Manager (add/edit/delete tasks, save to LocalStorage)
+
+Countdown Timer to JEE Mains + Advanced (use correct future dates)
+
+Progress Tracker (subject-wise visual progress bars)
+
+Motivational Quotes Section (rotating daily)
+
+Calendar View (user can add tasks per date)
+
+Goal Tracker (set monthly/weekly goals, mark complete)
+
+Leaderboard Placeholder (future expansion)
+
+
+Settings Page:
+
+Toggle Dark/Light Mode (default = Dark)
+
+Edit profile name (stored in LocalStorage)
+
+Reset all progress/tasks option
+
+
+
+Technical Requirements:
+
+Full JavaScript functionality implemented — no mockups
+
+Use LocalStorage to store all user data (login, tasks, goals, calendar, progress)
+
+Organized file structure:
+
+/index.html (Landing page)
+
+/login.html
+
+/signup.html
+
+/dashboard.html
+
+/settings.html
+
+/css/styles.css (All styles)
+
+/js/app.js (All core logic)
+
+/assets/ (icons/images if needed)
+
+
+Include and configure:
+
+Typed.js (for typing effect on landing page)
+
+AOS.js (for scroll animations)
+
+
+Fully responsive (desktop and mobile friendly)
+
+Add defer attribute in <script> tags for proper loading
+
+Project must be downloadable as ZIP and deployable directly on Netlify (without backend errors)

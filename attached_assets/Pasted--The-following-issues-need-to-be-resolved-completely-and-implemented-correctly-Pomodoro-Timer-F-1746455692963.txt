@@ -1,0 +1,74 @@
+
+The following issues need to be resolved completely and implemented correctly:
+
+🔁 Pomodoro Timer Fixes
+✅ The timer now persists across navigation, but:
+
+When navigating away and back, it always shows the "Start" button, even if the timer is actively running.
+
+🔧 Fix:
+
+On component mount or context load, check whether the timer is still running using isRunning state or timestamp comparison.
+
+If the timer is active, show the Pause button, not the Start button.
+
+Resume countdown display from where it should be based on Date.now() - startTimestamp.
+
+🔥 Study Streak Badge (Currently Not Functional)
+The streak logic appears to be present but not working.
+
+✅ Implement:
+
+When a Pomodoro work session is completed, store the current date in localStorage or DB (studyDates = [2024-05-05, 2024-05-04, ...]).
+
+On each app load:
+
+Check how many consecutive past days exist in studyDates → that’s the current streak.
+
+Also calculate longestStreak from stored data.
+
+Display on dashboard:
+
+txt
+Copy
+Edit
+🔥 Current Streak: 4 days
+🏆 Longest Streak: 7 days
+🧠 Smart Study Recommendations (Make Functional + JEE-Specific)
+✅ Currently shows irrelevant subject ("Biology") and may not be fetching or analyzing real data.
+
+🔧 Fix:
+
+Replace subjects list with actual JEE subjects only: ["Physics", "Chemistry", "Mathematics"]
+
+Track session completion by subject (tie Pomodoro or goals to subjects)
+
+Generate smart recommendations like:
+
+“📌 You haven’t studied Chemistry in 3 days — revise Organic basics.”
+
+“⚠️ Math sessions decreasing — consider solving PYQs today.”
+
+Add subject-to-session linking:
+
+When starting a Pomodoro session, let the user optionally select a subject
+
+Store that data and use it in analysis
+
+💡 Bonus: UI Polish (Optional but Useful)
+Dashboard badges and recommendation cards should use meaningful icons and modern styling
+
+Disable irrelevant subjects or placeholder content
+
+Make dashboard dynamic: update study streak & suggestions in real-time without refresh
+
+📦 Deployment-Ready Requirements
+No UI mismatches (e.g., wrong button showing)
+
+No state loss or reset bugs
+
+No placeholder content (like Biology or Lorem Ipsum)
+
+No console errors or crashes
+
+Fully functional and persistent streak + recommendation logic

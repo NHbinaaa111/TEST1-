@@ -1,0 +1,95 @@
+You must fix the Pomodoro Timer's pause/resume functionality. It's currently resetting the timer when "Pause" is clicked, which is wrong.
+
+🛠️ Required Fixes (Do It All in One Go — No Bugs)
+✅ 1. Pause Should Preserve Time Left
+When "Pause" is clicked:
+
+The timer should stop counting down (clear the interval).
+
+The remaining time (e.g. 13:45) must be preserved in state.
+
+DO NOT RESET timeLeft — keep it as is.
+
+When "Resume" is clicked:
+
+Start counting down again from the preserved timeLeft.
+
+Use setInterval() again, just like when starting fresh, but now from the saved value.
+
+Use a state structure like this:
+
+ts
+Copy
+Edit
+const [timeLeft, setTimeLeft] = useState(duration); // in seconds
+const [isPaused, setIsPaused] = useState(false);
+const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+And logic like:
+
+ts
+Copy
+Edit
+const pauseTimer = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    setIntervalId(null);
+  }
+  setIsPaused(true);
+};
+
+const resumeTimer = () => {
+  const newInterval = setInterval(() => {
+    setTimeLeft(prev => prev - 1);
+  }, 1000);
+  setIntervalId(newInterval);
+  setIsPaused(false);
+};
+✅ 2. UI Requirements
+Button must switch to "Resume" when paused.
+
+Timer display must keep showing remaining time — it should not reset to full.
+
+✅ 3. Preserve Current Fixes
+Make sure to keep:
+
+Confetti only on work session completion.
+
+Sounds at the end of sessions, according to settings.
+
+No bugs, no regression.
+
+Once this fix is verified to work 100%, continue with implementing the low-risk, high-reward features, specifically:
+
+🚀 IMPLEMENT THESE FEATURES NEXT (Safe + Valuable)
+✅ Smart Study Streak Motivational Badges
+Show streak badges (🔥, 🏆) when users study daily.
+
+Store streak count in DB and update it if a Pomodoro or session is completed on a new day.
+
+Show current streak on dashboard or timer.
+
+✅ AI-powered Study Recommendation Engine (Simple Version)
+Based on completed subjects or weak areas (hardcoded for now), recommend next topic.
+
+Suggest topics using a simple logic in frontend:
+
+ts
+Copy
+Edit
+if (subjectScores.math < 50) suggest("Revise Quadratic Equations");
+Keep it local until backend support is added. No ML needed now.
+
+💡 Reminder
+Everything must:
+
+Use TypeScript
+
+Work with React + Tailwind + Shadcn
+
+Integrate cleanly with PostgreSQL + Drizzle ORM + Passport.js
+
+Be deployment-ready for Render
+
+Once these are done, proceed to interactive heatmap next.
+
+Let me know when the fix and features are confirmed and I’ll write the full heatmap implementation prompt.

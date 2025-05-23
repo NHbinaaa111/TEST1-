@@ -1,0 +1,1248 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Neon Theme Colors - Exact match to design reference */
+  --neon-blue: #00FFB8; /* Teal-cyan for highlights */
+  --neon-purple: #BF40FF; /* Bright purple for accents */
+  --neon-green: #CCFF00; /* Vibrant lime green */
+  --neon-pink: #FF4FCB; /* Bright pink for highlights */
+  --neon-orange: #FFB830; /* Golden orange for data viz */
+  --neon-cyan: #66CCFF; /* Bright cyan for indicators */
+  
+  /* Dark background colors - Exact match to design reference */
+  --bg-dark: #121212; /* Main app background */
+  --bg-card: #1E1E1E; /* Card/panel background */
+  --bg-elevated: #252525; /* Elevated elements */
+  --bg-input: #2A2A2A; /* Input fields */
+  --border-dark: #333333; /* Darker borders */
+  --text-primary: #F5F5F5; /* Main text color */
+  --text-secondary: #B0B0B0; /* Secondary text */
+  --text-muted: #777777; /* Muted text */
+  
+  /* shadcn UI system colors - mapped to our dark theme */
+  --background: 0 0% 7%; /* #121212 */
+  --foreground: 0 0% 96%; /* #F5F5F5 */
+  --card: 0 0% 12%; /* #1E1E1E */
+  --card-foreground: 0 0% 96%; /* #F5F5F5 */
+  --popover: 0 0% 12%; /* #1E1E1E */
+  --popover-foreground: 0 0% 96%; /* #F5F5F5 */
+  --primary: 156 100% 50%; /* #00FFB8 - neon-blue */
+  --primary-foreground: 0 0% 100%; /* white */
+  --secondary: 82 100% 50%; /* #CCFF00 - neon-green */
+  --secondary-foreground: 0 0% 100%; /* white */
+  --muted: 0 0% 15%; /* #262626 */
+  --muted-foreground: 0 0% 69%; /* #B0B0B0 */
+  --accent: 326 100% 65%; /* #FF4FCB - neon-pink */
+  --accent-foreground: 0 0% 100%; /* white */
+  --destructive: 0 63% 50%; /* #D92929 */
+  --destructive-foreground: 0 0% 100%; /* white */
+  --border: 0 0% 20%; /* #333333 */
+  --input: 0 0% 17%; /* #2A2A2A */
+  --ring: 156 100% 50%; /* #00FFB8 - neon-blue */
+  
+  /* Chart colors */
+  --chart-1: 156 100% 50%; /* #00FFB8 - neon-blue */
+  --chart-2: 82 100% 50%; /* #CCFF00 - neon-green */
+  --chart-3: 326 100% 65%; /* #FF4FCB - neon-pink */
+  --chart-4: 283 100% 62%; /* #BF40FF - neon-purple */
+  --chart-5: 195 100% 70%; /* #66CCFF - neon-cyan */
+  
+  /* Sidebar colors */
+  --sidebar-background: 0 0% 9%; /* #171717 - slightly darker than bg-dark */
+  --sidebar-foreground: 0 0% 96%; /* #F5F5F5 */
+  --sidebar-primary: 156 100% 50%; /* #00FFB8 - neon-blue */
+  --sidebar-primary-foreground: 0 0% 100%; /* white */
+  --sidebar-accent: 82 100% 50%; /* #CCFF00 - neon-green */
+  --sidebar-accent-foreground: 0 0% 100%; /* white */
+  --sidebar-border: 0 0% 15%; /* #262626 */
+  --sidebar-ring: 156 100% 50%; /* #00FFB8 - neon-blue */
+  
+  /* Border radius for consistency */
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'DM Sans', 'Poppins', 'Inter', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(204, 255, 0, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 85% 75%, rgba(0, 255, 184, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(191, 64, 255, 0.02) 0%, transparent 40%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'DM Sans', sans-serif;
+  font-weight: 600;
+}
+
+/* Scrollbar styling - Enhanced for modern dark UI look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+  box-shadow: 0 0 12px rgba(0, 255, 184, 0.4);
+}
+
+/* Enhanced Neon glow text effects */
+.glow-green {
+  color: var(--neon-green);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 8px rgba(204, 255, 0, 0.7),
+    0 0 20px rgba(204, 255, 0, 0.5);
+  font-weight: 600;
+}
+
+.glow-blue {
+  color: var(--neon-blue);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 8px rgba(0, 255, 184, 0.7),
+    0 0 20px rgba(0, 255, 184, 0.5);
+  font-weight: 600;
+}
+
+.glow-pink {
+  color: var(--neon-pink);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 8px rgba(255, 79, 203, 0.7),
+    0 0 20px rgba(255, 79, 203, 0.5);
+  font-weight: 600;
+}
+
+.glow-purple {
+  color: var(--neon-purple);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 8px rgba(191, 64, 255, 0.7),
+    0 0 20px rgba(191, 64, 255, 0.5);
+  font-weight: 600;
+}
+
+.glow-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 8px rgba(102, 204, 255, 0.7),
+    0 0 20px rgba(102, 204, 255, 0.5);
+  font-weight: 600;
+}
+
+.glow-orange {
+  color: var(--neon-orange);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 8px rgba(255, 184, 48, 0.7),
+    0 0 20px rgba(255, 184, 48, 0.5);
+  font-weight: 600;
+}
+
+/* Dashboard view background with subtle gradients */
+.dashboard-view {
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(204, 255, 0, 0.02) 0%, transparent 25%),
+    radial-gradient(circle at 90% 20%, rgba(0, 255, 184, 0.02) 0%, transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(191, 64, 255, 0.02) 0%, transparent 30%);
+  min-height: 100vh;
+}
+
+/* Card hover effects with smooth animations */
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 30px rgba(0, 255, 184, 0.25);
+}
+
+/* Card styling - Modern dark glass-like dashboard style with glowing effects */
+.card {
+  background-color: var(--bg-card);
+  background-image: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.03) 0%, 
+    rgba(255, 255, 255, 0.01) 40%, 
+    rgba(0, 0, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.card:hover {
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 20px rgba(0, 255, 184, 0.2);
+  border-color: rgba(0, 255, 184, 0.15);
+  transform: translateY(-2px);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(204, 255, 0, 0.2) 15%, 
+    rgba(102, 204, 255, 0.2) 50%,
+    rgba(255, 79, 203, 0.2) 85%, 
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Gradient Cards - Different color variants matching the reference design */
+.card-blue-gradient {
+  background: linear-gradient(135deg, rgba(0, 55, 70, 0.8) 0%, rgba(0, 20, 40, 0.9) 100%);
+  border-color: rgba(0, 255, 184, 0.2);
+}
+
+.card-blue-gradient:hover {
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 255, 184, 0.15) inset,
+    0 0 25px rgba(0, 255, 184, 0.25);
+}
+
+.card-green-gradient {
+  background: linear-gradient(135deg, rgba(30, 70, 0, 0.8) 0%, rgba(20, 40, 0, 0.9) 100%);
+  border-color: rgba(204, 255, 0, 0.2);
+}
+
+.card-green-gradient:hover {
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(204, 255, 0, 0.15) inset,
+    0 0 25px rgba(204, 255, 0, 0.25);
+}
+
+.card-purple-gradient {
+  background: linear-gradient(135deg, rgba(60, 0, 80, 0.8) 0%, rgba(35, 0, 45, 0.9) 100%);
+  border-color: rgba(191, 64, 255, 0.2);
+}
+
+.card-purple-gradient:hover {
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(191, 64, 255, 0.15) inset,
+    0 0 25px rgba(191, 64, 255, 0.25);
+}
+
+.card-pink-gradient {
+  background: linear-gradient(135deg, rgba(80, 0, 60, 0.8) 0%, rgba(45, 0, 35, 0.9) 100%);
+  border-color: rgba(255, 79, 203, 0.2);
+}
+
+.card-pink-gradient:hover {
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 79, 203, 0.15) inset,
+    0 0 25px rgba(255, 79, 203, 0.25);
+}
+
+/* Input styling - Modern dark dashboard style */
+input, select, textarea {
+  background-color: var(--bg-input);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.2) inset,
+    0 1px 0 rgba(255, 255, 255, 0.03);
+  font-family: 'DM Sans', 'Poppins', sans-serif;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--neon-blue);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.2) inset,
+    0 0 0 1px rgba(0, 255, 184, 0.3),
+    0 0 12px rgba(0, 255, 184, 0.2);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-family: 'DM Sans', 'Poppins', sans-serif;
+}
+
+/* Input variants based on reference design */
+.input-blue {
+  border-color: rgba(0, 255, 184, 0.3);
+}
+
+.input-blue:focus {
+  border-color: rgba(0, 255, 184, 0.6);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.2) inset,
+    0 0 0 1px rgba(0, 255, 184, 0.3),
+    0 0 15px rgba(0, 255, 184, 0.3);
+}
+
+.input-green {
+  border-color: rgba(204, 255, 0, 0.3);
+}
+
+.input-green:focus {
+  border-color: rgba(204, 255, 0, 0.6);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.2) inset,
+    0 0 0 1px rgba(204, 255, 0, 0.3),
+    0 0 15px rgba(204, 255, 0, 0.3);
+}
+
+.input-purple {
+  border-color: rgba(191, 64, 255, 0.3);
+}
+
+.input-purple:focus {
+  border-color: rgba(191, 64, 255, 0.6);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.2) inset,
+    0 0 0 1px rgba(191, 64, 255, 0.3),
+    0 0 15px rgba(191, 64, 255, 0.3);
+}
+
+/* Dialog and modal styling - Modern dark dashboard glassy effect */
+.dialog-content, 
+.sheet-content,
+.popover-content,
+.alert-dialog-content,
+.dropdown-content {
+  background-color: rgba(30, 30, 30, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 0 30px rgba(0, 0, 0, 0.8) !important;
+  border-radius: 1.25rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Add subtle gradient border glow to dialog elements */
+.dialog-content::before, 
+.sheet-content::before,
+.popover-content::before,
+.alert-dialog-content::before,
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 184, 0.3), 
+    rgba(204, 255, 0, 0.2), 
+    rgba(191, 64, 255, 0.3), 
+    rgba(255, 79, 203, 0.2));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Dialog headers should have a subtle gradient */
+.dialog-header, 
+.alert-dialog-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
+  position: relative !important;
+}
+
+.dialog-header::after, 
+.alert-dialog-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 184, 0.3) 50%, 
+    transparent 100%);
+}
+
+/* Enhanced Neon text effects with stronger glow */
+.neon-text-blue {
+  color: var(--neon-blue);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 6px rgba(0, 255, 184, 0.6),
+    0 0 12px rgba(0, 255, 184, 0.4);
+  font-weight: 600;
+}
+
+.neon-text-purple {
+  color: var(--neon-purple);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 6px rgba(191, 64, 255, 0.6),
+    0 0 12px rgba(191, 64, 255, 0.4);
+  font-weight: 600;
+}
+
+.neon-text-green {
+  color: var(--neon-green);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 6px rgba(204, 255, 0, 0.6),
+    0 0 12px rgba(204, 255, 0, 0.4);
+  font-weight: 600;
+}
+
+.neon-text-pink {
+  color: var(--neon-pink);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 6px rgba(255, 79, 203, 0.6),
+    0 0 12px rgba(255, 79, 203, 0.4);
+  font-weight: 600;
+}
+
+.neon-text-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 
+    0 0 2px rgba(255, 255, 255, 0.4),
+    0 0 6px rgba(102, 204, 255, 0.6),
+    0 0 12px rgba(102, 204, 255, 0.4);
+  font-weight: 600;
+}
+
+/* Neon border effect - Enhanced with more vibrant gradient */
+.neon-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(45deg, var(--neon-green), var(--neon-blue), var(--neon-purple), var(--neon-pink));
+  background-size: 400% 400%;
+  animation: neon-border-gradient 8s ease infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@keyframes neon-border-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Chart styles for dark modern dashboard */
+.chart-container {
+  margin: 1rem 0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background-color: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 184, 0.2) 30%, 
+    rgba(191, 64, 255, 0.2) 70%, 
+    transparent 100%);
+  opacity: 0.5;
+}
+
+.chart-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-family: 'Poppins', 'DM Sans', sans-serif;
+}
+
+.chart-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Timeline styles for dashboard calendar */
+.timeline {
+  padding: 1rem;
+  background-color: rgba(25, 25, 25, 0.5);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.timeline-item {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background-color: rgba(35, 35, 35, 0.8);
+  margin-bottom: 0.75rem;
+  border-left: 3px solid var(--neon-blue);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(3px);
+  background-color: rgba(40, 40, 40, 0.9);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item-blue {
+  border-left-color: var(--neon-blue);
+}
+
+.timeline-item-green {
+  border-left-color: var(--neon-green);
+}
+
+.timeline-item-purple {
+  border-left-color: var(--neon-purple);
+}
+
+.timeline-item-pink {
+  border-left-color: var(--neon-pink);
+}
+
+.timeline-item-cyan {
+  border-left-color: var(--neon-cyan);
+}
+
+.timeline-item-orange {
+  border-left-color: var(--neon-orange);
+}
+
+.timeline-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-description {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Data visualization colors */
+.viz-blue {
+  color: var(--neon-blue);
+  fill: var(--neon-blue);
+}
+
+.viz-green {
+  color: var(--neon-green);
+  fill: var(--neon-green);
+}
+
+.viz-purple {
+  color: var(--neon-purple);
+  fill: var(--neon-purple);
+}
+
+.viz-pink {
+  color: var(--neon-pink);
+  fill: var(--neon-pink);
+}
+
+.viz-cyan {
+  color: var(--neon-cyan);
+  fill: var(--neon-cyan);
+}
+
+.viz-orange {
+  color: var(--neon-orange);
+  fill: var(--neon-orange);
+}
+
+/* Enhanced Shadow effects for more vibrant glow */
+.shadow-neon-blue {
+  box-shadow: 
+    0 0 5px rgba(0, 255, 184, 0.2),
+    0 0 15px rgba(0, 255, 184, 0.4),
+    0 0 30px rgba(0, 255, 184, 0.2);
+}
+
+.shadow-neon-purple {
+  box-shadow: 
+    0 0 5px rgba(191, 64, 255, 0.2),
+    0 0 15px rgba(191, 64, 255, 0.4),
+    0 0 30px rgba(191, 64, 255, 0.2);
+}
+
+.shadow-neon-green {
+  box-shadow: 
+    0 0 5px rgba(204, 255, 0, 0.2),
+    0 0 15px rgba(204, 255, 0, 0.4),
+    0 0 30px rgba(204, 255, 0, 0.2);
+}
+
+.shadow-neon-pink {
+  box-shadow: 
+    0 0 5px rgba(255, 79, 203, 0.2),
+    0 0 15px rgba(255, 79, 203, 0.4),
+    0 0 30px rgba(255, 79, 203, 0.2);
+}
+
+.shadow-neon-cyan {
+  box-shadow: 
+    0 0 5px rgba(102, 204, 255, 0.2),
+    0 0 15px rgba(102, 204, 255, 0.4),
+    0 0 30px rgba(102, 204, 255, 0.2);
+}
+
+/* Button styling - Modern dark dashboard with neon glow effects */
+.btn-neon {
+  background-color: rgba(30, 30, 30, 0.9);
+  border: 1px solid var(--neon-blue);
+  color: var(--neon-blue);
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  font-family: 'Poppins', 'DM Sans', sans-serif;
+  backdrop-filter: blur(5px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(0, 255, 184, 0.2);
+}
+
+.btn-neon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 184, 0.15),
+    rgba(0, 255, 184, 0.05),
+    rgba(0, 255, 184, 0.15));
+  background-size: 200% 200%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-neon:hover::before {
+  opacity: 1;
+  animation: neon-button-gradient 3s ease infinite;
+}
+
+.btn-neon:hover {
+  transform: translateY(-3px);
+  color: white;
+  border-color: rgba(0, 255, 184, 0.8);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(0, 255, 184, 0.4),
+    0 0 30px rgba(0, 255, 184, 0.5);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.btn-neon:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 255, 184, 0.3),
+    0 0 15px rgba(0, 255, 184, 0.4);
+}
+
+@keyframes neon-button-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Button color variants matching reference design */
+.btn-neon-green {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(204, 255, 0, 0.2);
+}
+
+.btn-neon-green::before {
+  background: linear-gradient(45deg, 
+    rgba(204, 255, 0, 0.15),
+    rgba(204, 255, 0, 0.05),
+    rgba(204, 255, 0, 0.15));
+}
+
+.btn-neon-green:hover {
+  border-color: rgba(204, 255, 0, 0.8);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(204, 255, 0, 0.4),
+    0 0 30px rgba(204, 255, 0, 0.5);
+}
+
+.btn-neon-pink {
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 79, 203, 0.2);
+}
+
+.btn-neon-pink::before {
+  background: linear-gradient(45deg, 
+    rgba(255, 79, 203, 0.15),
+    rgba(255, 79, 203, 0.05),
+    rgba(255, 79, 203, 0.15));
+}
+
+.btn-neon-pink:hover {
+  border-color: rgba(255, 79, 203, 0.8);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 79, 203, 0.4),
+    0 0 30px rgba(255, 79, 203, 0.5);
+}
+
+.btn-neon-purple {
+  border-color: var(--neon-purple);
+  color: var(--neon-purple);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(191, 64, 255, 0.2);
+}
+
+.btn-neon-purple::before {
+  background: linear-gradient(45deg, 
+    rgba(191, 64, 255, 0.15),
+    rgba(191, 64, 255, 0.05),
+    rgba(191, 64, 255, 0.15));
+}
+
+.btn-neon-purple:hover {
+  border-color: rgba(191, 64, 255, 0.8);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(191, 64, 255, 0.4),
+    0 0 30px rgba(191, 64, 255, 0.5);
+}
+
+.btn-neon-cyan {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(102, 204, 255, 0.2);
+}
+
+.btn-neon-cyan::before {
+  background: linear-gradient(45deg, 
+    rgba(102, 204, 255, 0.15),
+    rgba(102, 204, 255, 0.05),
+    rgba(102, 204, 255, 0.15));
+}
+
+.btn-neon-cyan:hover {
+  border-color: rgba(102, 204, 255, 0.8);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(102, 204, 255, 0.4),
+    0 0 30px rgba(102, 204, 255, 0.5);
+}
+
+/* Enhanced Border styles with stronger glow effects */
+.border-neon-blue {
+  border-color: var(--neon-blue) !important;
+  box-shadow: 
+    0 0 2px rgba(0, 255, 184, 0.3),
+    0 0 8px rgba(0, 255, 184, 0.5),
+    0 0 12px rgba(0, 255, 184, 0.2);
+}
+
+.border-neon-purple {
+  border-color: var(--neon-purple) !important;
+  box-shadow: 
+    0 0 2px rgba(191, 64, 255, 0.3),
+    0 0 8px rgba(191, 64, 255, 0.5),
+    0 0 12px rgba(191, 64, 255, 0.2);
+}
+
+.border-neon-green {
+  border-color: var(--neon-green) !important;
+  box-shadow: 
+    0 0 2px rgba(204, 255, 0, 0.3),
+    0 0 8px rgba(204, 255, 0, 0.5),
+    0 0 12px rgba(204, 255, 0, 0.2);
+}
+
+.border-neon-pink {
+  border-color: var(--neon-pink) !important;
+  box-shadow: 
+    0 0 2px rgba(255, 79, 203, 0.3),
+    0 0 8px rgba(255, 79, 203, 0.5),
+    0 0 12px rgba(255, 79, 203, 0.2);
+}
+
+.border-neon-cyan {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 
+    0 0 2px rgba(102, 204, 255, 0.3),
+    0 0 8px rgba(102, 204, 255, 0.5),
+    0 0 12px rgba(102, 204, 255, 0.2);
+}
+
+/* Progress bar effects - Enhanced with glowing gradients matching reference design */
+.progress-bar-container {
+  width: 100%;
+  height: 0.6rem;
+  background-color: rgba(25, 25, 25, 0.9);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) inset;
+  padding: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.progress-bar-blue {
+  background: linear-gradient(90deg, rgba(0, 200, 170, 0.9), rgba(0, 255, 184, 1));
+  box-shadow: 
+    0 0 8px rgba(0, 255, 184, 0.5),
+    0 0 18px rgba(0, 255, 184, 0.3);
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+}
+
+.progress-bar-blue::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+  transform: translateX(-100%);
+  animation: progress-shimmer 2s infinite;
+}
+
+.progress-bar-green {
+  background: linear-gradient(90deg, rgba(180, 220, 10, 0.9), rgba(204, 255, 0, 1));
+  box-shadow: 
+    0 0 8px rgba(204, 255, 0, 0.5),
+    0 0 18px rgba(204, 255, 0, 0.3);
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+}
+
+.progress-bar-green::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+  transform: translateX(-100%);
+  animation: progress-shimmer 2s infinite;
+}
+
+.progress-bar-purple {
+  background: linear-gradient(90deg, rgba(150, 50, 220, 0.9), rgba(191, 64, 255, 1));
+  box-shadow: 
+    0 0 8px rgba(191, 64, 255, 0.5),
+    0 0 18px rgba(191, 64, 255, 0.3);
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+}
+
+.progress-bar-purple::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+  transform: translateX(-100%);
+  animation: progress-shimmer 2s infinite;
+}
+
+.progress-bar-pink {
+  background: linear-gradient(90deg, rgba(230, 50, 180, 0.9), rgba(255, 79, 203, 1));
+  box-shadow: 
+    0 0 8px rgba(255, 79, 203, 0.5),
+    0 0 18px rgba(255, 79, 203, 0.3);
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+}
+
+.progress-bar-pink::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+  transform: translateX(-100%);
+  animation: progress-shimmer 2s infinite;
+}
+
+.progress-bar-orange {
+  background: linear-gradient(90deg, rgba(255, 150, 0, 0.9), rgba(255, 184, 48, 1));
+  box-shadow: 
+    0 0 8px rgba(255, 184, 48, 0.5),
+    0 0 18px rgba(255, 184, 48, 0.3);
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+}
+
+.progress-bar-orange::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+  transform: translateX(-100%);
+  animation: progress-shimmer 2s infinite;
+}
+
+.progress-bar-cyan {
+  background: linear-gradient(90deg, rgba(50, 180, 255, 0.9), rgba(102, 204, 255, 1));
+  box-shadow: 
+    0 0 8px rgba(102, 204, 255, 0.5),
+    0 0 18px rgba(102, 204, 255, 0.3);
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+}
+
+.progress-bar-cyan::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+  transform: translateX(-100%);
+  animation: progress-shimmer 2s infinite;
+}
+
+@keyframes progress-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Dashboard panels - Modern dark dashboard style with glassy look */
+.dashboard-panel {
+  background-color: var(--bg-card);
+  background-image: 
+    linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.03) 0%, 
+      rgba(255, 255, 255, 0.01) 40%, 
+      rgba(0, 0, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.dashboard-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 35px rgba(0, 255, 184, 0.2);
+  border-color: rgba(0, 255, 184, 0.2);
+}
+
+.dashboard-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 184, 0.25) 30%, 
+    rgba(191, 64, 255, 0.25) 70%, 
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dashboard-panel:hover::before {
+  opacity: 1;
+}
+
+/* Stat cards in dashboard - Styled like reference design */
+.stat-card {
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 25px rgba(0, 255, 184, 0.15);
+}
+
+.stat-card-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stat-card-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-card-change {
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  margin-top: 0.5rem;
+}
+
+.stat-card-change-positive {
+  color: var(--neon-green);
+  background-color: rgba(204, 255, 0, 0.1);
+}
+
+.stat-card-change-negative {
+  color: #FF4657;
+  background-color: rgba(255, 70, 87, 0.1);
+}
+
+/* Variant styles for panels - Matching reference design */
+.dashboard-panel-green {
+  border-color: rgba(204, 255, 0, 0.12);
+  background-image: 
+    linear-gradient(135deg, 
+      rgba(204, 255, 0, 0.05) 0%, 
+      rgba(204, 255, 0, 0.01) 50%, 
+      rgba(0, 0, 0, 0.05) 100%);
+}
+
+.dashboard-panel-green:hover {
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 35px rgba(204, 255, 0, 0.2);
+  border-color: rgba(204, 255, 0, 0.2);
+}
+
+.dashboard-panel-green::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(204, 255, 0, 0.3) 50%, 
+    transparent 100%);
+}
+
+.dashboard-panel-purple {
+  border-color: rgba(191, 64, 255, 0.12);
+  background-image: 
+    linear-gradient(135deg, 
+      rgba(191, 64, 255, 0.05) 0%, 
+      rgba(191, 64, 255, 0.01) 50%, 
+      rgba(0, 0, 0, 0.05) 100%);
+}
+
+.dashboard-panel-purple:hover {
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 35px rgba(191, 64, 255, 0.2);
+  border-color: rgba(191, 64, 255, 0.2);
+}
+
+.dashboard-panel-purple::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(191, 64, 255, 0.3) 50%, 
+    transparent 100%);
+}
+
+.dashboard-panel-pink {
+  border-color: rgba(255, 79, 203, 0.12);
+  background-image: 
+    linear-gradient(135deg, 
+      rgba(255, 79, 203, 0.05) 0%, 
+      rgba(255, 79, 203, 0.01) 50%, 
+      rgba(0, 0, 0, 0.05) 100%);
+}
+
+.dashboard-panel-pink:hover {
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 35px rgba(255, 79, 203, 0.2);
+  border-color: rgba(255, 79, 203, 0.2);
+}
+
+.dashboard-panel-pink::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 79, 203, 0.3) 50%, 
+    transparent 100%);
+}
+
+.dashboard-panel-cyan {
+  border-color: rgba(102, 204, 255, 0.12);
+  background-image: 
+    linear-gradient(135deg, 
+      rgba(102, 204, 255, 0.05) 0%, 
+      rgba(102, 204, 255, 0.01) 50%, 
+      rgba(0, 0, 0, 0.05) 100%);
+}
+
+.dashboard-panel-cyan:hover {
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 0 35px rgba(102, 204, 255, 0.2);
+  border-color: rgba(102, 204, 255, 0.2);
+}
+
+.dashboard-panel-cyan::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(102, 204, 255, 0.3) 50%, 
+    transparent 100%);
+}

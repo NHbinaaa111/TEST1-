@@ -1,0 +1,84 @@
+
+You've fixed the Pomodoro Timer and UI state — now do the following in one go, without errors:
+
+🔥 1. Study Streak (Functional & Accurate)
+Fixes needed:
+
+Currently shows 0 Current Streak, 0 Longest Streak, 0 Total Days, even after sessions.
+
+What to implement:
+
+✅ A day counts as a "study day" if the user:
+
+Completes at least one Pomodoro work session OR
+
+Completes a test on that date.
+
+✅ Track:
+
+studyDates: array of ISO date strings (['2025-05-04', '2025-05-05'])
+
+currentStreak: count of consecutive days ending with today
+
+longestStreak: max length streak across all time
+
+totalDays: count of unique study days
+
+✅ On app load:
+
+Recalculate all values from studyDates (use moment.js or date-fns)
+
+✅ Save studyDates to localStorage or persistent DB (whichever system you're using)
+
+✅ Display in the dashboard as:
+
+yaml
+Copy
+Edit
+🔥 Current Streak: 3 days
+🏆 Longest Streak: 6 days
+📅 Total Days: 8
+📊 2. Smart Study Recommendations (Based on Tests & Sessions Only)
+Fixes needed:
+
+Currently shows made-up values like "372 days without Chemistry" even if user studied it recently.
+
+Also, recommendations seem hardcoded or random.
+
+What to implement:
+
+✅ Track study/test activity by subject:
+
+When a user completes a test, log { subject: 'Physics', date: '2025-05-05' }
+
+When a user starts a Pomodoro, prompt/select a subject and log { subject: 'Chemistry', type: 'pomodoro', date: '2025-05-05' }
+
+✅ For each subject (Physics, Chemistry, Math):
+
+Calculate days since last activity
+
+If inactivity > 3 days, generate a suggestion like:
+
+"⚠️ You haven’t practiced Chemistry in 4 days. Consider revising Organic Reactions."
+
+✅ Store subject logs in localStorage or DB and make sure it updates every time user completes session/test.
+
+✅ Render recommendations dynamically on dashboard with correct icons.
+
+🎯 Bonus: UX Feedback (Optional Enhancements)
+For first-time users: show “No data yet” in streaks/recommendations if there's no history
+
+Add refresh icon next to recommendations (already present but should reprocess data)
+
+❗ Requirements
+No hardcoded durations like "372 days"
+
+No placeholder subjects like "Biology"
+
+Dashboard must update in real-time after completing sessions/tests
+
+No console errors, null state bugs, or visual mismatches
+
+Once all this is done, we can finally move to analytics, performance tracking graphs, and heatmaps.
+
+Let me know when this is implemented.

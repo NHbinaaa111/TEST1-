@@ -1,0 +1,65 @@
+I’m developing a full-stack web app (frontend + backend) currently on Replit Preview, and I’ll be deploying it to Render later.
+
+I’m facing multiple critical issues:
+
+Login fails with: relation "users" does not exist
+
+Registration fails: "failed to register user"
+
+Session/authentication fails: login doesn’t persist, protected routes fail with “authentication required” or “error loading data”
+
+No Forgot Password functionality exists
+
+I'm seeing CORS, cookie, and session issues in both frontend and backend
+
+🔧 Please fully fix these from the roots and prepare the app to run smoothly on Replit Preview now and Render later.
+
+🔩 Back-End Fixes:
+✅ Setup the users table via Prisma or SQL with correct fields: id, email, hashedPassword, resetToken, resetTokenExpiry, createdAt, updatedAt
+
+✅ Implement secure registration (with bcrypt hashing)
+
+✅ Implement working login (verifies password, sets session cookie properly)
+
+✅ Configure CORS and session cookies for cross-origin use:
+
+On dev (Replit Preview): secure: false, sameSite: "lax", domain left unset
+
+On production (Render): secure: true, sameSite: "none", properly set domain
+
+✅ Use express-session or your session lib with proper cookie setup
+
+✅ Add structured logs on login/register/session for easier debugging
+
+🔄 Front-End Fixes:
+✅ Always use credentials: "include" in fetch for auth routes
+
+✅ Show appropriate success/error messages on login/register
+
+✅ Don’t nest <a> tags inside each other (resolve validateDOMNesting warning)
+
+🔐 Forgot Password Flow:
+✅ Add forgot password form (email input)
+
+✅ On backend: generate secure random reset token, store in DB with expiry
+
+✅ Log reset link to console for now (mock email)
+
+✅ Add reset password page where user enters new password using token
+
+✅ Backend endpoint validates token and updates password
+
+🧪 Final Step:
+Test everything fully on Replit Preview:
+
+User registration
+
+Login + cookie/session behavior
+
+Protected route access
+
+Forgot password request → reset flow
+
+Ensure all of this is ready to work when hosted on Render later
+
+Please implement these completely in one go, making the app production-ready with authentication that works across local and deployed environments.

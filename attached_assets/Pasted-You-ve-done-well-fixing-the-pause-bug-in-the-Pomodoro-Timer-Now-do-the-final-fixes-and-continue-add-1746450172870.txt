@@ -1,0 +1,104 @@
+You've done well fixing the pause bug in the Pomodoro Timer. Now do the final fixes and continue adding key features without breaking anything.
+
+✅ PART 1 — Fix Remaining Pomodoro Bugs
+❌ BUG 1: No Sound Notification
+Even though sound settings are present, no audio plays when a session ends.
+
+Fix this by:
+
+Adding distinct sound effects for work session complete and break session complete.
+
+Use new Audio("...") and call .play() when timer hits 0, only if sound is enabled in user settings.
+
+Handle autoplay restrictions — ensure user interaction starts audio context.
+
+Example:
+
+ts
+Copy
+Edit
+const sound = new Audio("/sounds/work-end.mp3");
+sound.play().catch(err => console.warn("Audio play failed", err));
+❌ BUG 2: Timer Resets On Route Change
+Moving to another page resets the timer — fix this without using global state or local storage hacks.
+
+Use URL params or context/global store:
+
+Wrap the Pomodoro in a context provider or use a top-level store (React Context or Zustand).
+
+Preserve timeLeft, isPaused, and sessionType across page changes without re-mounting the timer.
+
+Make sure state survives navigation.
+
+✅ You may:
+
+Use React Context or Zustand to keep timer data.
+
+Delay unmounting (React Router Outlet or layout routes).
+
+Use React Query or localStorage fallback (only if necessary).
+
+✅ PART 2 — Implement These Features (Low Risk, High Reward)
+1️⃣ Smart Study Streak Motivational Badges
+When a user completes at least one Pomodoro or study session in a day:
+
+Mark it as a successful day.
+
+Track streak in DB (e.g., study_logs table with date).
+
+On dashboard or Pomodoro page, display:
+
+🔥 for current streak
+
+🏆 for longest streak
+
+Display message like:
+🔥 3-day streak! Keep it up!
+
+2️⃣ AI-Powered Study Recommendation (Simple Version)
+Implement a simple recommendation logic based on mock data:
+
+Example: If user's Math score is low, suggest "Revise Quadratic Equations".
+
+Use frontend logic to conditionally display suggestions.
+
+Use card UI (shadcn/ui) with suggestions like:
+
+📘 "Revise Electrostatics — last quiz score: 42%"
+
+💡 "Consider reviewing Physics: Kinematics"
+
+Later, you can make this dynamic with real data from DB.
+
+🔒 REQUIREMENTS
+No crashes or broken features
+
+Maintain existing Pomodoro + Confetti + Auth functionality
+
+100% deployable to Render
+
+No TypeScript errors
+
+Use:
+
+React, TS, Tailwind, Shadcn
+
+Express, Node.js
+
+PostgreSQL + Drizzle ORM
+
+Passport.js (session-based auth)
+
+React Query for state
+
+Once all this is done and verified, proceed with the Heatmap feature next.
+
+Let me know when you’re ready for that prompt.
+
+
+
+
+
+
+
+

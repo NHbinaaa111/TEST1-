@@ -1,0 +1,56 @@
+I need the JEE Dashboard features to be fully functional and deeply integrated across the app. Several pieces are currently either placeholders or broken. Here's everything I want you to fix and implement properly in one go:
+
+🔧 1. Fix & Enhance the Add Test Result Form:
+✅ The toast notifications work. Now add a required "Areas of Improvement" field (text input or textarea) to the form.
+
+Save the entered subject, topic, score, date, and areas of improvement in the test records storage (localStorage or backend-mock).
+
+Ensure all fields are validated and saved correctly. Prevent empty or incomplete submissions.
+
+📊 2. Make the Smart Study Recommendations Fully Functional:
+Analyze Pomodoro study logs + Test records:
+
+Pomodoro: Count frequency and duration of subjects studied over time.
+
+Test records: Look at topics with low scores and pull user-defined “areas of improvement.”
+
+Use this data to generate actual recommendations, not dummy text. Examples:
+
+“You’ve studied Physics more than Chemistry in the past week. Focus more on Chemistry.”
+
+“You marked ‘Organic Chemistry – Reactions’ as a weak area. Revise NCERT and solve 15 questions.”
+
+These should update dynamically when new test data or pomodoro logs are added.
+
+🧠 3. Link Smart Study Recommendations on Home Page:
+On the main Dashboard (home page), the Smart Study Recommendations section should relay the exact same data from the JEE Dashboard’s recommendation engine.
+
+Make it read-only (editable only from JEE Dashboard).
+
+Ensure this component auto-updates if new test results or pomodoro sessions are added.
+
+📈 4. Implement the Analytics Section:
+Visualize meaningful insights using charts or bars. Use recharts or a simple library.
+
+Breakdown of study hours per subject from Pomodoro logs (weekly/monthly).
+
+Trend of scores over time from test records (per subject).
+
+Highlight weak topics based on lowest scores and most mentioned "areas of improvement."
+
+All data should reflect the real stored entries — no mock or placeholder values.
+
+Add fallback UI for "no data" scenarios.
+
+📂 5. Data Handling & Quality:
+Store everything reliably (in localStorage or a dummy in-memory store with context).
+
+Prevent data duplication, corrupt entries, or null values.
+
+Validate all user input before saving.
+
+🔁 After doing all of this:
+
+Test all major interactions (Add test, generate recommendation, view analytics, navigate between pages).
+
+Ensure the app is bug-free, TypeScript safe, and ready to deploy as-is.

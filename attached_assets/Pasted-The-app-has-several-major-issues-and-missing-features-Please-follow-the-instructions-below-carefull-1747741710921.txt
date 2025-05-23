@@ -1,0 +1,134 @@
+The app has several major issues and missing features. Please follow the instructions below carefully and fix each point thoroughly:
+
+
+---
+
+1. Study Recommendations:
+
+Issue A: When there is no data, the placeholders are unhelpful and misleading (e.g., "You haven't studied Chemistry in 387 days").
+
+Replace with friendly fallback text like:
+
+> “No study data available yet. Complete Pomodoro sessions or log test scores to see personalized recommendations.”
+
+
+
+
+Issue B: Recommendations don’t update unless the full site is refreshed.
+
+Fix the refresh button in the recommendations section so it fetches fresh data without a full page reload.
+
+
+Issue C: The Dashboard only shows one subject or incorrect data.
+
+Ensure recommendations are shown for all 3 subjects (Physics, Chemistry, Math) on both the main Dashboard and JEE Dashboard.
+
+Keep the data in sync between both dashboards.
+
+
+
+
+---
+
+2. Pomodoro Timer Bugs:
+
+Prevent any Pomodoro settings (duration, subject) from being changed while the timer is running.
+
+Disable input fields & subject selector once a session has started.
+
+
+Fix the bug where the subject resets back to “General Study” when the session is edited mid-run.
+
+Preserve the selected subject during the full Pomodoro cycle.
+
+
+
+
+---
+
+3. Pomodoro → Study Sessions Integration:
+
+After completing a Pomodoro session, automatically log it as a new study session.
+
+Include:
+
+Subject (P/C/M)
+
+Duration
+
+Title (optional or default: "Pomodoro Session")
+
+
+
+
+
+---
+
+4. Study Sessions:
+
+Add a subject selector (Physics, Chemistry, Math) when logging or editing study sessions.
+
+Add an edit option to:
+
+Change title
+
+Change subject
+
+Decrease time (but not increase beyond original duration)
+
+
+Add clean UI feedback after saving an edit (toast/snackbar confirmation).
+
+
+
+---
+
+5. Graph + Analytics Fixes:
+
+The current line/bar graphs are too confusing.
+
+Use simpler, cleaner charts with proper legends and consistent colors per subject.
+
+Label axes and data points clearly.
+
+Use line charts or pie charts only if they are easy to understand at a glance.
+
+
+
+
+---
+
+6. UI/UX & Visual Theme Overhaul:
+
+The site’s visuals are inconsistent:
+
+Random white borders
+
+Sudden black sections that break the dark theme
+
+
+Redesign the entire site to maintain a cohesive dark + neon aesthetic, including:
+
+Unified card styles
+
+Rounded corners (2xl)
+
+Neon borders or shadows
+
+Consistent text & icon colors
+
+
+Ensure responsive design:
+
+Fix text overlaps on mobile
+
+Make all components adjust gracefully on smaller screens
+
+Test mobile view for every main page
+
+
+
+
+---
+
+Once done, please list exactly what you’ve changed, and ensure NO placeholder content is left behind. This is a high-priority production fix — so the site should be completely usable, intuitive, and bug-free after this update

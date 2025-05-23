@@ -1,0 +1,72 @@
+✅ SMART STUDY RECOMMENDATIONS — FINAL FIX
+Do NOT show random placeholder suggestions like “372 days since Organic Chemistry.” That is meaningless.
+
+Check for actual data presence before showing anything. For each subject (Physics, Chemistry, Math), do the following:
+
+If test records exist for the subject:
+Find the latest test with that subject and:
+
+If the score < 50%, and “area of improvement” is filled → show:
+
+“You recently scored <score>% in <topic>. Review <area of improvement>.”
+
+If the score is ≥ 50% → do not show a recommendation for that subject unless Pomodoro data applies.
+
+If no relevant test data:
+Then fall back to Pomodoro session history:
+
+Show: “Last studied <subject> <X> days ago. Consider revising.”
+
+If neither test nor Pomodoro data exists:
+Show: “No data available yet for <subject>. Add a test or log a study session to see recommendations.”
+
+✅ Also, ensure:
+
+Study streak is correctly calculated
+
+Remove all hardcoded "days since..." strings
+
+Recommendations should auto-update when new tests or Pomodoros are logged
+
+📊 ANALYTICS SECTION — FINAL IMPLEMENTATION
+Add a new Overall Performance section with two dynamic charts using Recharts:
+
+1. Test Score Trends Chart
+Allow user to select:
+
+Yearly / Monthly / Weekly views
+
+Chart: Line or bar chart with x-axis = time and y-axis = score
+
+Group scores by subject with different colors
+
+If no test records exist for selected period, show:
+“No test data available for this period.”
+
+2. Study Hours Chart
+Pull data from Pomodoro/study sessions
+
+Same Year/Month/Week selection
+
+Chart: Bar chart showing total hours per subject
+
+If no study sessions exist for selected period, show:
+“No study data available for this period.”
+
+Other Requirements:
+Responsive design
+
+Type-safe with proper data handling
+
+Empty states should be clear, not silent or broken
+
+✅ Final Notes:
+
+No placeholders. All recommendations and analytics must be based ONLY on actual data.
+
+Don’t show irrelevant or misleading content
+
+Dashboard must be clean, clear, and data-driven
+
+Let me know when it's 100% complete and working, with screenshot proof.
+

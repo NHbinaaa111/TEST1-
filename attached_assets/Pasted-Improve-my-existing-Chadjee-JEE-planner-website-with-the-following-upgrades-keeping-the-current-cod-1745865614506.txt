@@ -1,0 +1,97 @@
+Improve my existing Chadjee JEE planner website with the following upgrades, keeping the current codebase and styling:
+
+Login/Signup Section:
+
+Implement working localStorage based Signup/Login.
+
+Add basic password validation (at least 6 characters).
+
+"Forgot Password" button should reset password inside localStorage.
+
+
+Dashboard Section:
+
+Fix JEE Countdown:
+
+Ask user which year JEE they are attempting (2025, 2026, etc.) via dropdown.
+
+Calculate countdown properly based on JEE Session 1 date (~24th January of the given year).
+
+
+
+Pomodoro Timer Section:
+
+Add a fully customizable Pomodoro Timer.
+
+User can set session length and break time manually.
+
+Include Start, Pause, and Reset buttons.
+
+Save timer settings in localStorage.
+
+
+
+Study Hours Tracker Section:
+
+Create Check-in / Check-out buttons.
+
+Calculate and display total time studied today.
+
+Show weekly average study time.
+
+Allow user to name/edit tasks.
+
+Save all session records in localStorage.
+
+
+Syllabus Tracker Section:
+
+Add full syllabus chapters for Physics, Chemistry (Physical, Organic, Inorganic), and Maths (Algebra, Calculus, Coordinate Geometry, etc.).
+
+Allow users to tick completed chapters.
+
+Subject-wise and total completion progress bars should auto-update.
+
+Save progress in localStorage.
+
+
+Notes Section:
+
+Add Notes functionality: user can add/edit/delete notes (for concepts, formulas, shortcuts).
+
+Save notes locally using localStorage.
+
+
+Test Section:
+
+Create a section to add Test records: Topic, Marks scored, Areas to Improve.
+
+Display saved tests in a table or list.
+
+
+Pages Fix:
+
+Implement basic functionality for "Tasks", "Goals", "Progress", "Study Planner", and "Calendar" pages (currently empty skeletons).
+
+Simple pages with working UI and minimal features for now.
+
+
+
+General Upgrades:
+
+Smooth navigation between sections (single page application feel if possible).
+
+Apply AOS animations properly across pages for better UX.
+
+Test and fix any broken buttons/links.
+
+
+Deployment Friendly:
+
+Keep the project static (HTML/CSS/JS only).
+
+No server, no database, no APIs — everything must work through browser and localStorage.
+
+Ensure correct relative linking for Netlify ZIP deployment (no absolute / paths).
+
+Final output should be ready for Netlify upload without backend setup needed.
